@@ -1,7 +1,6 @@
 #include "common.h"
 
 typedef struct {
-    int id;
     char name[SIZE_NAME];
     char description[SIZE_DESCRIPTION];
     int atk_modifier; 
@@ -48,10 +47,15 @@ typedef struct{
 }Decision;
 
 typedef struct{
-    int id;
     char name[SIZE_NAME];
     char description[SIZE_DESCRIPTION];
     Decision *combat_decision_1;
     Decision *combat_decision_2;
     Decision *scenario_decision;
 }Scenario;
+
+
+
+
+
+

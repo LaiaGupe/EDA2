@@ -1,4 +1,10 @@
-#include "enemies.c"
+#include "structs.h"
+
+//Initialize enemies
+Enemy Helga = {"Helga Von Guggen",100, 20, 0 };
+Enemy Mandy = {"Helga Von Guggen",100, 20, 0 };
+Enemy Blaine = {"Helga Von Guggen",100, 20, 0 };
+Enemy Myrna = {"Helga Von Guggen",100, 20, 0 };
 
 //Initialize options
     //mall options
@@ -113,3 +119,49 @@
         "Congratulations! You saved your friends and the penthause and, most importantly, you can now go watch Mean Girls!"
         };
 
+
+Decision dec1 = {"What do you want to do?", {&opt1, &opt2}, 2 }; //decide if going in the shop or keep going throug the corridor (MALL)
+Decision dec2 = {"What do you want to do?", {&opt8, &opt3}, 2 }; //decide if going to prison ir to Uiversity (scenario decision)
+Decision dec3 = {"What do you want to do?", {&opt5, &opt7}, 2 }; //first Uni then prison go to electic room or keep in the corridor (PRISON)
+Decision dec4 = {"What do you want to do?", {&opt4, &opt6}, 2 }; //first you go to prison then univesiti going to electric room or keep in the corridor (PRISON)
+Decision dec5 = {"What do you want to do?", {&opt9, &opt11}, 2 }; //First Uni then prison go to class or go to cafeteria (UNI)
+Decision dec6 = {"What do you want to do?", {&opt10, &opt12}, 2 }; //first prison then Uni go to class or go to cafeteria (UNI)
+
+// I don't think it is really necessary Maybe we do need it because if not how do we print the text to go to the penthgouse
+Decision dec7 = {"What do you want to do?", {&opt13, NULL}, 1}; //Scenario decicion to go to the last scenario --> Penthouse
+
+
+Scenario mall = {
+    "Beverly Hills Mall",
+    "This is the Beverly Hills Center Mall, an upscale shopping center in Beverly Hills. The character loves to spend his/her evenings there buying any type of clothes or just looking and trying them.", 
+    &dec1,  //Batle decision
+    NULL, 
+    &dec2   //Scenario decision
+    };
+
+
+Scenario uni = {
+    "Malibu University",
+    "Malibu University (more commonly called \"Mali-U\" for short) is the college that Sam, Clover, Alex, Blaine and Mandy attend. Sam, Clover, Alex and Mandy graduated from Beverly Hills High.", 
+    &dec5,  //
+    &dec6,   //
+    NULL
+    };
+
+
+Scenario prison = {
+    "Whoop prison",
+    "Here is where they imprison all their enemies. It is a high security prison but sometimes a prisoner escapes and the security needs the help from the spies to put them back in their cells.", 
+    &dec3,  //
+    &dec4,
+    NULL
+    };
+
+
+Scenario house = {
+    "Spies’ Penthouse",
+    "This is where the character lives, it is a huge penthouse with 2 pools and over 8 rooms. The character gets the house as a present from her/his parents when he/she moves to university.", 
+    &dec7,
+    NULL,
+    NULL
+    };
