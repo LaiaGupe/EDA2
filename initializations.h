@@ -1,3 +1,0 @@
-#include "initializations.c"
-
-//Emenies
