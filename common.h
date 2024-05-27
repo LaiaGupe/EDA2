@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define SIZE_NAME 40
+#define SIZE_NAME 400
 #define SIZE_SKILLS 4
 #define SIZE_DESCRIPTION 1000
 #define TEXT 2000

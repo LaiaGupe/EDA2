@@ -115,6 +115,3 @@ void scenario_function(Scenario *current_scenario){
 
 
 
-int main(){
-    scenario_function(&mall);   
-}
