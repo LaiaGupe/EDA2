@@ -1,4 +1,4 @@
-#include "initializations.c"
+#include "initializations.h"
 
 int chosen_path(int path_option, int path){
     if (path_option == 1){
@@ -81,12 +81,12 @@ void print_options(Scenario *current_scenario, int path){
     if (path == 1){
         printf("Option 1: %s\n", current_scenario->combat_decision_1->options[0]->option_name); //Perque dona error d'acces?
         printf("Option 2: %s\n", current_scenario->combat_decision_1->options[1]->option_name); //Perque dona error d'acces?
-        printf("Path 1\n");
+        printf("Entern an option: ");
     }
     if (path == 2){
         printf("Option 1: %s\n", current_scenario->combat_decision_2->options[0]->option_name); //Perque dona error d'acces?
         printf("Option 2: %s\n", current_scenario->combat_decision_2->options[1]->option_name); //Perque dona error d'acces?
-        printf("Path 2\n");
+        printf("Entern an option: ");
     }
 }
 
@@ -104,9 +104,6 @@ void scenario_function(Scenario *current_scenario){
     int path_option;
     print_scenario_description(current_scenario, path);
     option_decision(current_scenario, path);
-    printf("%s", current_scenario->scenario_decision->q_text);
-    printf("Option 1: %s", current_scenario->scenario_decision->options[0]->option_name);
-    printf("Option 2: %s", current_scenario->scenario_decision->options[0]->option_name);
     scanf("%d", &path_option);
     chosen_path(path_option, path);
     while (scenario_count <= 4){
@@ -116,9 +113,8 @@ void scenario_function(Scenario *current_scenario){
     }
 }
 
+
+
 int main(){
-    Scenario mall;
-    printf("%s", mall.name);
-    scenario_function(&mall);
-    
+    scenario_function(&mall);   
 }

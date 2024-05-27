@@ -131,7 +131,7 @@ Decision dec6 = {"What do you want to do?", {&opt10, &opt12}, 2 }; //first priso
 Decision dec7 = {"What do you want to do?", {&opt13, NULL}, 1}; //Scenario decicion to go to the last scenario --> Penthouse
 
 
-Scenario mall = {
+extern Scenario mall = {
     "Beverly Hills Mall",
     "This is the Beverly Hills Center Mall, an upscale shopping center in Beverly Hills. The character loves to spend his/her evenings there buying any type of clothes or just looking and trying them.", 
     &dec1,  //Batle decision
