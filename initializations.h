@@ -183,6 +183,7 @@ SkillDirect tattoo = {"If you are running out of life points, with this gadget y
 
 
 
+//Characters initialization
 Character Clover = {"Clover", 100, 5, 5 }; 
 Character Sam = {"Sam", 100, 5, 5 }; 
 Character Alex = {"Alex", 100, 5, 5 }; 

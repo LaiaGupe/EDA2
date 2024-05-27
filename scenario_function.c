@@ -46,9 +46,7 @@ void option2_function(Scenario current_scenario, int path){
     }
 }
 
-void option_decision(Scenario *current_scenario, int path){
-    int option;
-    scanf("%d", &option);
+void option_decision(Scenario *current_scenario, int path, int option){
     if (path == 1){
         switch (option){
             case 1:
@@ -101,14 +99,17 @@ void print_scenario_description(Scenario *current_scenario, int path){
 void scenario_function(Scenario *current_scenario){
     int scenario_count = 0;
     int path = 1;
+    int option;
     int path_option;
     print_scenario_description(current_scenario, path);
-    option_decision(current_scenario, path);
-    scanf("%d", &path_option);
+    scanf("%d", &option);
+    option_decision(current_scenario, path, option);
+    //escollit escenari
     chosen_path(path_option, path);
     while (scenario_count <= 4){
         print_scenario_description(current_scenario, path);
-        option_decision(current_scenario, path);
+        scanf("%d", &option);
+        option_decision(current_scenario, path, option);
         scenario_count++;
     }
 }
