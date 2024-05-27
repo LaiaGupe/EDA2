@@ -1,6 +1,6 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/laiagp/Desktop/UPF/CURS 23 - 24/3r Trimestre/EDA ll/LAB/EDA2/scenario_function'
+binary-path:     '/Users/laiagp/Desktop/UPF/CURS 23 - 24/3r Trimestre/EDA ll/EDA2/scenario_function'
 relocations:
   - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _chosen_path, symObjAddr: 0x0, symBinAddr: 0x100003858, symSize: 0x58 }
   - { offsetInCU: 0x3F, offset: 0x3F, size: 0x8, addend: 0x0, symName: _Helga, symObjAddr: 0x6B8, symBinAddr: 0x100008000, symSize: 0x0 }
