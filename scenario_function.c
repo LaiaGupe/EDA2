@@ -92,7 +92,7 @@ void print_options(Scenario *current_scenario, int path){
 
 
 void print_scenario_description(Scenario *current_scenario, int path){
-    printf("You're in the scenario: %s. \n %s", current_scenario->name, current_scenario->description); // perque no imprimeix bé en nom de l'escenario ni la descripció?
+    printf("You're in the scenario: %s.\n%s", current_scenario->name, current_scenario->description); // perque no imprimeix bé en nom de l'escenario ni la descripció?
     printf("%s\n", current_scenario->combat_decision_1->q_text); //Aqui passa el mateix
     print_options(current_scenario, path);
 }
