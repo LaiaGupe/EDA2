@@ -134,7 +134,7 @@ void combat(Enemy *enemy, Character current_character)
             } else{
                 current_character.hp=current_character.hp - (enemy->attck - current_character.def);
             };
-            printf("The enemy has attaked and now you have %d defense points, and %d health points. \n", current_character.def, current_character.hp);
+            printf("The enemy has attaked and now you have %d defense points, and %d health points.\n", current_character.def, current_character.hp);
         
         };
 
@@ -154,23 +154,23 @@ void combat(Enemy *enemy, Character current_character)
             switch (type_battle_choice)
             {
             case 'a':
-                printf("You've chosen to attack.");
-                break;
-            case 'l':
-                printf("You've chosen to defense.");
+                printf("You've chosen to attack.\n");
                 break;
             case 'd':
-                printf("You've chosen to add life points.");
+                printf("You've chosen to defense.\n");
+                break;
+            case 'l':
+                printf("You've chosen to add life points.\n");
                 break;
             default:
                 break;
             }
 
-            printf("Now you can choose the object you want to use (remember which ones were for attack, which ones for defense, and which ones were used to add points.\n).");
-            printf("Enter 1 to use the %s\n", current_character.skills[0]->name); //Com puc imprimir el nom de les differents skills q el jugador ha previament triat al principi de la partida?
-            printf("Enter 2 to use the %s\n", current_character.skills[1]->name);
-            printf("Enter 3 to use the %s\n", current_character.skills[2]->name);
-            printf("Enter 4 to use the %s\n", current_character.skills[3]->name);
+            printf("Now you can choose the object you want to use (remember which ones were for attack, which ones for defense, and which ones were used to add points.) \n");
+            printf("Enter 1 to use the %s \n", current_character.skills[1]->name); //Com puc imprimir el nom de les differents skills q el jugador ha previament triat al principi de la partida?
+            printf("Enter 2 to use the %s \n", current_character.skills[2]->name);
+            printf("Enter 3 to use the %s \n", current_character.skills[3]->name);
+            printf("Enter 4 to use the %s \n", current_character.skills[4]->name);
             //The player imputs which skills wants to use
             printf("Enter your choice:\n ");
             int skill_choice;
