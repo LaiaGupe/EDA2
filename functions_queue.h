@@ -1,6 +1,4 @@
-#include "structs.h"
-#include "common.h"
-#include <stdio.h>
+#include "initializations.h"
 #include <stdlib.h>
 #include <time.h>
 

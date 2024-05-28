@@ -69,7 +69,7 @@ if(character_selected==3){
 // demanar input skills
 // here we will cutomize the player's skill list with the 4 skills they select
 clearScreen();
-SkillDirect available_skills[TOTAL_SKILLS] = {laser_lip, dryer, boomerang, backpack, umbrella, perfume, mirall, tattoo};
+SkillDirect available_skills[TOTAL_SKILLS] = {laser_lip, dryer, boomerang, backpack, umbrella, perfume, mirall, tattoo}; //aqui hi ha problem
 
 // here the procedure is as follows: we firstly print the skills menu, then get the selected skill and then save it in the player's customized character
 print_skills_menu();
