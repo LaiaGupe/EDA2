@@ -116,4 +116,10 @@ void scenario_function(Scenario *current_scenario, Character current_character){
 }
 
 
-
+int main(){
+    Character Sam;
+    printf("HP: %d\n", Sam.hp);
+    printf("Attck: %d\n", Sam.attck);
+    printf("Def: %d\n", Sam.def);
+    scenario_function(&mall, Sam); 
+}
