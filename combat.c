@@ -76,10 +76,10 @@ void printQueue(Queue *q) {
 
 void combat(Enemy *enemy, Character current_character)
 {
-    printf("You are now starting the fight. You'll fight against %s", enemy->name);
-    printf("She/he has %d life points, %d attack points, and %d defense points", enemy->hp, enemy->attck, enemy->def);
-    printf("Your character has %d life points, %d attack points, and %d defense points.", current_character.hp, current_character.attck,current_character.def);
-    printf("This fight is going to have 15 number of turns, each round it's going to inform you if it's your turn or your enemy's.");
+    printf("You are now starting the fight. You'll fight against %s\n", enemy->name);
+    printf("She/he has %d life points, %d attack points, and %d defense points\n", enemy->hp, enemy->attck, enemy->def);
+    printf("Your character has %d life points, %d attack points, and %d defense points.\n", current_character.hp, current_character.attck,current_character.def);
+    printf("This fight is going to have 15 number of turns, each round it's going to inform you if it's your turn or your enemy's.\n");
     
     //choose whos turn it is 
     // Seed the random number generator with the current time
