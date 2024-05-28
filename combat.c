@@ -76,10 +76,11 @@ void printQueue(Queue *q) {
 
 void combat(Enemy *enemy, Character current_character)
 {
-    printf("You are now starting the fight. You'll fight against %s", enemy->name);
-    printf("She/he has %d life points, %d attack points, and %d defense points", enemy->hp, enemy->attck, enemy->def);
-    printf("Your character has %d life points, %d attack points, and %d defense points.", current_character.hp, current_character.attck,current_character.def);
-    printf("This fight is going to have 15 number of turns, each round it's going to inform you if it's your turn or your enemy's.");
+
+    printf("You are now starting the fight. You'll fight against %s\n", enemy->name);
+    printf("She/he has %d life points, %d attack points, and %d defense points\n", enemy->hp, enemy->attck, enemy->def);
+    printf("Your character has %d life points, %d attack points, and %d defense points.\n", current_character.hp, current_character.attck,current_character.def);
+    printf("This fight is going to have 15 number of turns, each round it's going to inform you if it's your turn or your enemy's.\n");
     
     //choose whos turn it is 
     // Seed the random number generator with the current time
@@ -108,6 +109,10 @@ void combat(Enemy *enemy, Character current_character)
     int combat_rounds = 0;
 
     while(current_character.hp > 0 && enemy->hp > 0 && combat_rounds<16){
+        //to compare strings
+        char str1[] = "character";
+        char str2[] = "enemy";
+       
        //print who's turn it is
         const char *firstElement = dequeue(&q);
         if (firstElement != NULL) {
@@ -117,7 +122,7 @@ void combat(Enemy *enemy, Character current_character)
         };
         
         //it's the enemys turn---------------------------------------------------------
-        if (firstElement == 'enemy'){
+        if (strcmp(str2, firstElement) == 0){
             //let's chose randomly how much is the enemy going to attack (between 18 and 24)
             int enemy_power_attack = rand() % (24 - 18 + 1) + 18;
 
@@ -129,35 +134,66 @@ void combat(Enemy *enemy, Character current_character)
             } else{
                 current_character.hp=current_character.hp - (enemy->attck - current_character.def);
             };
-            printf("The enemy has attaked and now you have %d defense points, and %d health points", current_character.def, current_character.hp);
+            printf("The enemy has attaked and now you have %d defense points, and %d health points. \n", current_character.def, current_character.hp);
         
         };
 
 
         //Now it's the players turn -----------------------------------------------------------
-        if (firstElement == 'character'){
-            printf("Now it's your turn!");
-            printf("First you are going to have to chose if you want to attack, to defend yourself, or to add life point to your character. Then, you can chose which gadget you want to use to do it.");
-            printf("Enter 'a' to attack, 'd' to defend yourselve, or 'l' to add life points.");
+        if (strcmp(str1, firstElement) == 0){
+            printf("Now it's your turn!\n");
+            printf("First you are going to have to chose if you want to attack, to defend yourself, or to add life point to your character. Then, you can chose which gadget you want to use to do it. \n");
+            printf("Enter 'a' to attack, 'd' to defend yourselve, or 'l' to add life points.\n");
+            
             //It needs to chose if it wants to attack, defend or add life points
-            printf("Enter your choice: ");
-            char type_battle_choice[SIZE_NAME];
-            fgets(type_battle_choice, sizeof(type_battle_choice), stdin);            
-            printf("Now you can choose the object you want to do it with.");
-            printf("Enter 1 to use the %s", current_character.skills[1]->name); //Com puc imprimir el nom de les differents skills q el jugador ha previament triat al principi de la partida?
-            printf("Enter 2 to use the %s", current_character.skills[2]->name);
-            printf("Enter 3 to use the %s", current_character.skills[3]->name);
-            printf("Enter 4 to use the %s", current_character.skills[4]->name);
-            //Now the player imputs which skills wants to use
-            printf("Enter your choice: ");
-            char skill_choice[SIZE_NAME];
-            fgets(skill_choice, sizeof(skill_choice), stdin);
-            //if the player choses to attack
-            if(type_battle_choice == 'a')
+            printf("Enter your choice:\n ");
+            char type_battle_choice = 'f';
+            scanf(" %c", &type_battle_choice); 
+            
+            //Print which option they've chosen
+            switch (type_battle_choice)
             {
+            case 'a':
+                printf("You've chosen to attack.");
+                break;
+            case 'l':
+                printf("You've chosen to defense.");
+                break;
+            case 'd':
+                printf("You've chosen to add life points.");
+                break;
+            default:
+                break;
+            }
 
-            };
-
+            printf("Now you can choose the object you want to use (remember which ones were for attack, which ones for defense, and which ones were used to add points.\n).");
+            printf("Enter 1 to use the %s\n", current_character.skills[0]->name); //Com puc imprimir el nom de les differents skills q el jugador ha previament triat al principi de la partida?
+            printf("Enter 2 to use the %s\n", current_character.skills[1]->name);
+            printf("Enter 3 to use the %s\n", current_character.skills[2]->name);
+            printf("Enter 4 to use the %s\n", current_character.skills[3]->name);
+            //The player imputs which skills wants to use
+            printf("Enter your choice:\n ");
+            int skill_choice;
+            scanf(" %d", &skill_choice);
+            
+            //depends on what the player choses what to do
+            switch (type_battle_choice)
+            {
+            case 'a':
+                enemy->hp -= current_character.skills[skill_choice]->atk_modifier;
+                printf("Good job! You've chosen to attack your enemy. Now %s has %d life point. Keep attaking and you'll win the fight!\n", enemy->name, enemy->hp);
+                break;
+            case 'l':
+                current_character.def += current_character.skills[skill_choice]->def_modifier;
+                printf("You've decided to augment your defense points.\n Now you have %d defense points.", current_character.def);
+                break;
+            case 'd':
+                current_character.hp += 22;
+                printf("You've chosen to use a gadget that adds you life points.\n Now you have %d life points.", current_character.hp);
+                break;
+            default:
+                break;
+            }
         }
 
         combat_rounds += 1;
