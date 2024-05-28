@@ -181,9 +181,12 @@ SkillDirect perfume = {"When you apply the perfume to yourself it creates an ice
 SkillDirect mirall = {"This gadget is like a phone with a scanner in it and when you use it, it scans your body and it cures you, giving you more energy and life. You can only use it once during your battle.", 1, 0, 0, 50};
 SkillDirect tattoo = {"If you are running out of life points, with this gadget you can dray a revival henna tattoo to add life points.You can only use it once during your battle.", 1, 0, 0, 50}; 
 
+SkillDirect available;
 
 
 //Characters initialization
 Character Clover = {"Clover", 100, 5, 5 }; 
 Character Sam = {"Sam", 100, 5, 5 }; 
 Character Alex = {"Alex", 100, 5, 5 }; 
+
+Character Player = {"", 100, 5, 5 }; 
