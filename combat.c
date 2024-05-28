@@ -76,6 +76,9 @@ void printQueue(Queue *q) {
 
 void combat(Enemy *enemy, Character current_character)
 {
+    current_character.attck = 0;
+    current_character.def = 5;
+    current_character.hp = 100;
 
     printf("You are now starting the fight. You'll fight against %s\n", enemy->name);
     printf("She/he has %d life points, %d attack points, and %d defense points\n", enemy->hp, enemy->attck, enemy->def);
@@ -127,14 +130,15 @@ void combat(Enemy *enemy, Character current_character)
             int enemy_power_attack = rand() % (24 - 18 + 1) + 18;
 
             //if characters defense points are 0, it only subtracts from hp
-            if(current_character.def ==0){
+            if(current_character.def == 0){
                 current_character.hp -= enemy_power_attack;   //TOT AQUEST APARTAT NO SE SI HE D'UTILITZAR UNA FLETZA PER ACCEDIR AL VALOR DE LES VARIABLES HO DE D'UTILITZAR UN PUNT PER CANVIAR EL VALOR
             } else if (current_character.def > enemy_power_attack){
                 current_character.def -= enemy_power_attack;
             } else{
-                current_character.hp=current_character.hp - (enemy->attck - current_character.def);
+                current_character.hp = current_character.hp - (enemy_power_attack - current_character.def);
+                current_character.def = 0;
             };
-            printf("The enemy has attaked and now you have %d defense points, and %d health points.\n", current_character.def, current_character.hp);
+            printf("The enemy has attaked with power %d, and now you have %d defense points, and %d health points.\n", enemy_power_attack, current_character.def, current_character.hp);
         
         };
 
@@ -166,11 +170,11 @@ void combat(Enemy *enemy, Character current_character)
                 break;
             }
 
-            printf("Now you can choose the object you want to use (remember which ones were for attack, which ones for defense, and which ones were used to add points.) \n");
-            printf("Enter 1 to use the %s \n", current_character.skills[1]->name); //Com puc imprimir el nom de les differents skills q el jugador ha previament triat al principi de la partida?
-            printf("Enter 2 to use the %s \n", current_character.skills[2]->name);
-            printf("Enter 3 to use the %s \n", current_character.skills[3]->name);
-            printf("Enter 4 to use the %s \n", current_character.skills[4]->name);
+            printf("Now you can choose the object you want to use (remember which ones are for attack, which ones for defense, and which ones are used to add points.) \n ATTK --> Laser lipstick, Hair dryer 3000, Banana Clip Boomerang\n DEF --> Jetback Backpack, All-Weather Umbrella, Ice-Queen perfume\n LIFE --> Telemirallet, Henna Tracer Tattoo\n");
+            printf("Enter 1 to use the %s \n", current_character.skills[0]->name); //Com puc imprimir el nom de les differents skills q el jugador ha previament triat al principi de la partida?
+            printf("Enter 2 to use the %s \n", current_character.skills[1]->name);
+            printf("Enter 3 to use the %s \n", current_character.skills[2]->name);
+            printf("Enter 4 to use the %s \n", current_character.skills[3]->name);
             //The player imputs which skills wants to use
             printf("Enter your choice:\n ");
             int skill_choice;
@@ -180,16 +184,16 @@ void combat(Enemy *enemy, Character current_character)
             switch (type_battle_choice)
             {
             case 'a':
-                enemy->hp -= current_character.skills[skill_choice]->atk_modifier;
+                enemy->hp -= (current_character.skills[(skill_choice-1)]->atk_modifier);
                 printf("Good job! You've chosen to attack your enemy. Now %s has %d life point. Keep attaking and you'll win the fight!\n", enemy->name, enemy->hp);
                 break;
             case 'l':
-                current_character.def += current_character.skills[skill_choice]->def_modifier;
-                printf("You've decided to augment your defense points.\n Now you have %d defense points.", current_character.def);
+                current_character.def += (current_character.skills[(skill_choice-1)]->def_modifier);
+                printf("You've decided to augment your defense points.\n Now you have %d defense points.\n", current_character.def);
                 break;
             case 'd':
                 current_character.hp += 22;
-                printf("You've chosen to use a gadget that adds you life points.\n Now you have %d life points.", current_character.hp);
+                printf("You've chosen to use a gadget that adds you life points.\n Now you have %d life points.\n", current_character.hp);
                 break;
             default:
                 break;
@@ -202,4 +206,5 @@ void combat(Enemy *enemy, Character current_character)
     if(enemy->hp > 0 || combat_rounds>16){
         game_over_funct(); //i still have to define this function
     }
+    printf("GOOD JOB! You've killed the enemy!");
 }
