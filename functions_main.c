@@ -57,7 +57,7 @@ int get_skill(){
        }return skill_id;
 }
 
-SkillDirect available_skills[TOTAL_SKILLS] = {laser_lip, dryer, boomerang, backpack, umbrella, perfume, mirall, tattoo};
+//SkillDirect available_skills[TOTAL_SKILLS] = {laser_lip, dryer, boomerang, backpack, umbrella, perfume, mirall, tattoo};
 
 void save_skill(SkillDirect available_skills, int selected_skill){ //???????? :( help
     int counter;
